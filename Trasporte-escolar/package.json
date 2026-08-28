@@ -6,6 +6,7 @@
   "scripts": {
     "exercise:1": "tsx src/exercise-1/index.ts",
     "exercise:2": "tsx src/exercise-2/index.ts",
+    "exercise:3": "tsx src/exercise-3/index.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +15,12 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^26.4.0",
     "tsx": "^4.23.12",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
