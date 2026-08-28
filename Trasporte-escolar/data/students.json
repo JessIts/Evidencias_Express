@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Juan Pérez",
+    "age": 12,
+    "route": "Ruta Norte"
+  },
+  {
+    "id": 2,
+    "name": "Laura Gómez",
+    "age": 10,
+    "route": "Ruta Sur"
+  },
+  {
+    "id": 3,
+    "name": "Carlos Rodríguez",
+    "age": 14,
+    "route": "Ruta Norte"
+  }
+]
