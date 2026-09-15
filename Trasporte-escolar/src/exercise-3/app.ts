@@ -1,5 +1,7 @@
 import express from "express";
+
 import studentsRouter from "./routes/students.routes.js";
+
 import { logger } from "./middlewares/logger.js";
 import { auth } from "./middlewares/auth.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
@@ -8,16 +10,16 @@ const app = express();
 
 app.use(express.json());
 
-// 1. Logging
+// Logging
 app.use(logger);
 
-// 2. Autenticación
+// Auth
 app.use(auth);
 
-// 3. Rutas
+// Routes
 app.use("/students", studentsRouter);
 
-// 4. Manejo de errores
+// Error handler
 app.use(errorHandler);
 
 export default app;

@@ -1,126 +1,174 @@
-import type { Request, Response, NextFunction } from "express";
+import type {
+  Request,
+  Response,
+  NextFunction
+} from "express";
 
-interface Student {
-  id: number;
-  name: string;
-  age: number;
-  route: string;
-}
+import { StudentsRepository } from "../repositories/students.repository.js";
+import { StudentsService } from "../services/student.services.js";
 
-let students: Student[] = [
-  {
-    id: 1,
-    name: "Juan Pérez",
-    age: 15,
-    route: "Ruta 1"
-  },
-  {
-    id: 2,
-    name: "María Gómez",
-    age: 16,
-    route: "Ruta 2"
-  }
-];
+import type {
+  CreateStudentDTO,
+  UpdateStudentDTO
+} from "../dtos/student.dto.js";
 
-// GET /students
+import type {
+  ApiResponse,
+  PaginatedResponse
+} from "../types/api.types.js";
+
+import type { Student } from "../types/student.types.js";
+
+const repository = new StudentsRepository();
+const service = new StudentsService(repository);
+
 export function getStudents(
   req: Request,
   res: Response
 ): void {
-  res.status(200).json(students);
-}
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
 
-// GET /students/:id
-export function getStudentById(
-  req: Request,
-  res: Response
-): void {
-  const id = Number(req.params.id);
-
-  const student = students.find(
-    (student) => student.id === id
-  );
-
-  if (!student) {
-    res.status(404).json({
-      error: "Estudiante no encontrado"
+  if (
+    !Number.isInteger(page) ||
+    !Number.isInteger(limit) ||
+    page < 1 ||
+    limit < 1 ||
+    limit > 100
+  ) {
+    res.status(400).json({
+      error: {
+        code: "INVALID_PAGINATION",
+        message:
+          "page debe ser un entero mayor que 0 y limit debe estar entre 1 y 100"
+      }
     });
 
     return;
   }
 
-  res.status(200).json(student);
-}
+  const result = service.getPaginated(page, limit);
 
-// POST /students
-export function createStudent(
-  req: Request,
-  res: Response
-): void {
-  const { name, age, route } = req.body;
-
-  const newStudent: Student = {
-    id: students.length > 0
-      ? Math.max(...students.map((student) => student.id)) + 1
-      : 1,
-    name,
-    age,
-    route
+  const response: PaginatedResponse<Student> = {
+    data: result.students,
+    pagination: {
+      page,
+      limit,
+      total: result.total,
+      totalPages: Math.ceil(result.total / limit)
+    }
   };
 
-  students.push(newStudent);
-
-  res.status(201).json(newStudent);
+  res.status(200).json(response);
 }
 
-// PUT /students/:id
+export function getStudentById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  try {
+    const id = Number(req.params.id);
+
+    if (!Number.isInteger(id) || id <= 0) {
+      res.status(400).json({
+        error: {
+          code: "INVALID_ID",
+          message: "El ID debe ser un número entero positivo"
+        }
+      });
+
+      return;
+    }
+
+    const student = service.getById(id);
+
+    const response: ApiResponse<Student> = {
+      data: student
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export function createStudent(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void {
+  try {
+    const data: CreateStudentDTO = req.body;
+
+    const student = service.create(data);
+
+    const response: ApiResponse<Student> = {
+      data: student
+    };
+
+    res.status(201).json(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export function updateStudent(
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ): void {
-  const id = Number(req.params.id);
+  try {
+    const id = Number(req.params.id);
 
-  const student = students.find(
-    (student) => student.id === id
-  );
+    if (!Number.isInteger(id) || id <= 0) {
+      res.status(400).json({
+        error: {
+          code: "INVALID_ID",
+          message: "El ID debe ser un número entero positivo"
+        }
+      });
 
-  if (!student) {
-    res.status(404).json({
-      error: "Estudiante no encontrado"
-    });
+      return;
+    }
 
-    return;
+    const data: UpdateStudentDTO = req.body;
+
+    const student = service.update(id, data);
+
+    const response: ApiResponse<Student> = {
+      data: student
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
   }
-
-  const { name, age, route } = req.body;
-
-  student.name = name ?? student.name;
-  student.age = age ?? student.age;
-  student.route = route ?? student.route;
-
-  res.status(200).json(student);
 }
 
-// DELETE /students/:id
 export function deleteStudent(
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ): void {
-  const id = Number(req.params.id);
+  try {
+    const id = Number(req.params.id);
 
-  const studentIndex = students.findIndex(
-    (student) => student.id === id
-  );
+    if (!Number.isInteger(id) || id <= 0) {
+      res.status(400).json({
+        error: {
+          code: "INVALID_ID",
+          message: "El ID debe ser un número entero positivo"
+        }
+      });
 
-  if (studentIndex === -1) {
-    res.status(404).json({
-      error: "Estudiante no encontrado"
-    });
+      return;
+    }
 
-    return;
+    service.delete(id);
+
+    res.status(204).send();
+  } catch (error) {
+    next(error);
   }
-
-  students.splice(studentIndex, 1);
-
-  res.status(204).send();
 }
