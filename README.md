@@ -1,541 +1,239 @@
 # 🚍 Transporte Escolar
 
-API REST desarrollada con **Node.js, TypeScript, Express y pnpm**, como parte del Bootcamp de Express - NodeJS.
+Proyecto desarrollado con **Node.js, TypeScript, Express y pnpm**, orientado al desarrollo de una API REST para la gestión de estudiantes de una empresa de transporte escolar.
 
-El proyecto simula la gestión de estudiantes de una empresa de transporte escolar mediante una API CRUD organizada bajo una arquitectura en capas.
-
----
-
-## 📚 Semana 03 — REST API y Arquitectura en Capas
-
-### Objetivos
-
-* Implementar una API REST con Express.
-* Organizar el proyecto usando arquitectura en capas.
-* Separar responsabilidades entre rutas, controladores, servicios y repositorios.
-* Utilizar TypeScript para tipar datos y DTOs.
-* Implementar respuestas JSON consistentes.
-* Agregar paginación.
-* Validar los datos recibidos.
-* Manejar errores de forma uniforme.
-* Implementar middlewares personalizados.
+El proyecto se desarrolla progresivamente mediante ejercicios prácticos sobre fundamentos de Node.js, programación asíncrona, Express, arquitectura por capas, validación, manejo de errores, autenticación y logging.
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-* [Node.js](https://nodejs.org/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [Express](https://expressjs.com/)
-* [pnpm](https://pnpm.io/)
-* [tsx](https://tsx.is/)
-* Postman para pruebas de la API.
+* **Node.js**
+* **TypeScript**
+* **Express**
+* **pnpm**
+* **Zod**
+* **Winston**
+* **Morgan**
+* **tsx**
+* **ES Modules (ESM)**
 
----
+### Versiones principales
 
-## 📦 Requisitos previos
-
-Antes de ejecutar el proyecto, debes tener instalado:
-
-* Node.js
-* pnpm
-* Git
-
-Puedes verificar las versiones con:
-
-```bash
-node -v
-pnpm -v
-git --version
+```text
+Node.js: 22.22.0
+TypeScript: 7.0.2
+pnpm: 10.33.0
+tsx: 4.23.12
 ```
 
 ---
 
-## 🚀 Instalación
+# 📚 Contenido del proyecto
 
-Clona el repositorio:
+## Semana 01 — Fundamentos de Node.js
 
-```bash
-git clone URL_DEL_REPOSITORIO
-```
+En esta etapa se trabajaron los conceptos fundamentales de Node.js y TypeScript.
 
-Ingresa a la carpeta del proyecto:
+### Temas
 
-```bash
-cd trasporte-escolar
-```
-
-Instala las dependencias:
-
-```bash
-pnpm install
-```
+* Event Loop
+* I/O no bloqueante
+* TypeScript
+* ES Modules
+* `import` / `export`
+* Módulo `fs`
+* Módulo `path`
+* Lectura de archivos
+* Estructura básica de un proyecto Node.js
 
 ---
 
-## ▶️ Ejecución del proyecto
+## Semana 02 — Patrones asíncronos
 
-### Ejecutar el ejercicio 1
+Se compararon diferentes formas de manejar operaciones asíncronas en Node.js.
 
-```bash
-pnpm run exercise:1
-```
+### Implementaciones
 
-### Ejecutar el ejercicio 2
+* Callbacks
+* Promises
+* `async/await`
+
+Se utilizó la lectura de un archivo `students.txt` como ejemplo práctico.
+
+### Ejecución
 
 ```bash
 pnpm run exercise:2
 ```
 
-### Ejecutar la API REST
+---
 
-```bash
-pnpm run exercise:3
-```
+# 🚀 Semana 03 — API REST con Express
 
-El servidor estará disponible en:
+Se implementó una API REST para administrar estudiantes.
+
+La API permite realizar operaciones CRUD:
+
+| Método | Endpoint        | Descripción                   |
+| ------ | --------------- | ----------------------------- |
+| GET    | `/students`     | Obtener todos los estudiantes |
+| GET    | `/students/:id` | Obtener un estudiante         |
+| POST   | `/students`     | Crear estudiante              |
+| PUT    | `/students/:id` | Actualizar estudiante         |
+| DELETE | `/students/:id` | Eliminar estudiante           |
+
+---
+
+# 🏗️ Arquitectura
+
+El proyecto utiliza una arquitectura organizada por responsabilidades:
 
 ```text
-http://localhost:3000
+src/
+└── exercise-3/
+    ├── controllers/
+    │   └── students.controller.ts
+    │
+    ├── dtos/
+    │   └── student.dto.ts
+    │
+    ├── middlewares/
+    │   ├── auth.ts
+    │   ├── errorHandler.ts
+    │   ├── logger.ts
+    │   ├── notFound.ts
+    │   └── validate.ts
+    │
+    ├── repositories/
+    │   └── students.repository.ts
+    │
+    ├── services/
+    │   └── students.service.ts
+    │
+    ├── types/
+    │   ├── api.types.ts
+    │   └── student.types.ts
+    │
+    ├── errors/
+    │   └── AppError.ts
+    │
+    ├── schemas/
+    │   └── student.schema.ts
+    │
+    ├── utils/
+    │   └── logger.ts
+    │
+    ├── app.ts
+    └── index.ts
 ```
 
----
+### Responsabilidades
 
-## 🧪 Verificar TypeScript
+#### Controller
 
-Para comprobar que no existen errores de TypeScript:
-
-```bash
-pnpm exec tsc --noEmit
-```
-
-Para compilar el proyecto:
-
-```bash
-pnpm run build
-```
-
----
-
-## 📁 Estructura del proyecto
+Gestiona las peticiones HTTP y las respuestas.
 
 ```text
-trasporte-escolar/
-│
-├── src/
-│   │
-│   ├── exercise-1/
-│   │   └── index.ts
-│   │
-│   ├── exercise-2/
-│   │   └── index.ts
-│   │
-│   └── exercise-3/
-│       │
-│       ├── controllers/
-│       │   └── students.controller.ts
-│       │
-│       ├── dtos/
-│       │   └── student.dto.ts
-│       │
-│       ├── middlewares/
-│       │   ├── auth.ts
-│       │   ├── errorHandler.ts
-│       │   └── logger.ts
-│       │
-│       ├── repositories/
-│       │   └── students.repository.ts
-│       │
-│       ├── routes/
-│       │   └── students.routes.ts
-│       │
-│       ├── services/
-│       │   └── students.service.ts
-│       │
-│       ├── types/
-│       │   ├── api.types.ts
-│       │   └── student.types.ts
-│       │
-│       ├── app.ts
-│       └── index.ts
-│
-├── .gitignore
-├── package.json
-├── pnpm-lock.yaml
-├── tsconfig.json
-└── README.md
+Request → Controller → Service
 ```
 
----
+#### Service
 
-## 🏗️ Arquitectura en capas
-
-La API utiliza la siguiente estructura:
+Contiene la lógica de negocio.
 
 ```text
-Cliente
-   │
-   ▼
-Routes
-   │
-   ▼
-Controllers
-   │
-   ▼
-Services
-   │
-   ▼
-Repositories
-   │
-   ▼
-Datos en memoria
+Controller → Service → Repository
 ```
 
-### Routes
+#### Repository
 
-Define los endpoints disponibles y dirige cada solicitud al controlador correspondiente.
+Se encarga del acceso y manipulación de los datos.
 
-### Controllers
+Actualmente se utiliza un arreglo en memoria como almacenamiento temporal.
 
-Recibe las solicitudes HTTP, obtiene los parámetros y devuelve las respuestas al cliente.
+#### DTO
 
-### Services
+Define la estructura de los datos que recibe la aplicación.
 
-Contiene la lógica de negocio, validaciones y reglas de la aplicación.
+#### Schemas
 
-### Repositories
+Utiliza **Zod** para validar los datos recibidos.
 
-Se encarga de consultar, crear, actualizar y eliminar estudiantes.
+#### Middleware
 
-Actualmente utiliza un arreglo en memoria como fuente de datos.
-
-### DTOs
-
-Define la estructura de los datos recibidos en las operaciones de creación y actualización.
-
-### Types
-
-Contiene las interfaces utilizadas para tipar estudiantes y respuestas de la API.
-
-### Middlewares
-
-Incluye:
-
-* Autenticación mediante API Key.
-* Registro de solicitudes.
-* Manejo global de errores.
+Permite ejecutar lógica antes o después de las rutas, como autenticación, validación, logging y manejo de errores.
 
 ---
 
-## 🔐 Autenticación
+# 📦 Semana 04 — Validación, errores y logging
 
-La API utiliza un middleware de autenticación simulado mediante el header:
+En esta etapa se agregaron mecanismos para mejorar la seguridad, validación y mantenimiento de la API.
 
-```http
-x-api-key: 123456
-```
+## Validación con Zod
 
-Este header debe enviarse en todas las solicitudes.
+Se implementaron esquemas para:
 
-### Ejemplo
-
-```http
-GET http://localhost:3000/students
-x-api-key: 123456
-```
-
-Si la API Key es incorrecta o no se envía, la solicitud será rechazada.
-
----
-
-## 🌐 Endpoints
-
-La ruta base es:
-
-```text
-http://localhost:3000/students
-```
-
----
-
-### Obtener todos los estudiantes
-
-```http
-GET /students
-```
+* Crear estudiantes
+* Actualizar estudiantes
+* Validar IDs
+* Validar parámetros de paginación
 
 Ejemplo:
 
-```http
-GET http://localhost:3000/students
-```
-
-Respuesta:
-
 ```json
 {
-  "data": [
-    {
-      "id": 1,
-      "name": "Juan Pérez",
-      "age": 15,
-      "route": "Ruta 1"
-    },
-    {
-      "id": 2,
-      "name": "María Gómez",
-      "age": 16,
-      "route": "Ruta 2"
-    }
-  ],
-  "pagination": {
-    "page": 1,
-    "limit": 10,
-    "total": 2,
-    "totalPages": 1
-  }
+  "name": "Carlos Pérez",
+  "age": 15,
+  "route": "Ruta Norte"
 }
 ```
+
+La API valida que:
+
+* `name` sea un texto obligatorio.
+* `age` sea un número entero mayor que cero.
+* `route` sea un texto obligatorio.
 
 ---
 
-### Obtener un estudiante por ID
+# 📄 DTOs
 
-```http
-GET /students/:id
-```
-
-Ejemplo:
-
-```http
-GET http://localhost:3000/students/1
-```
-
-Respuesta:
-
-```json
-{
-  "data": {
-    "id": 1,
-    "name": "Juan Pérez",
-    "age": 15,
-    "route": "Ruta 1"
-  }
-}
-```
-
----
-
-### Crear un estudiante
-
-```http
-POST /students
-```
-
-Ejemplo:
-
-```http
-POST http://localhost:3000/students
-```
-
-Body:
-
-```json
-{
-  "name": "Carlos Rodríguez",
-  "age": 17,
-  "route": "Ruta 3"
-}
-```
-
-Respuesta:
-
-```json
-{
-  "data": {
-    "id": 3,
-    "name": "Carlos Rodríguez",
-    "age": 17,
-    "route": "Ruta 3"
-  }
-}
-```
-
-Código HTTP:
+Se utilizan DTOs derivados directamente de los esquemas de Zod.
 
 ```text
-201 Created
+CreateStudentDTO
+UpdateStudentDTO
 ```
+
+Esto permite mantener sincronizada la validación con los tipos utilizados por TypeScript.
 
 ---
 
-### Actualizar un estudiante
+# ❌ Manejo de errores
 
-```http
-PUT /students/:id
+Se creó una clase personalizada:
+
+```text
+AppError
 ```
+
+Esta permite definir:
+
+* Mensaje
+* Código HTTP
+* Código interno del error
+* Si el error es operacional
 
 Ejemplo:
 
-```http
-PUT http://localhost:3000/students/1
-```
-
-Body:
-
-```json
-{
-  "name": "Juan Pérez actualizado",
-  "age": 16,
-  "route": "Ruta 4"
-}
-```
-
-Respuesta:
-
-```json
-{
-  "data": {
-    "id": 1,
-    "name": "Juan Pérez actualizado",
-    "age": 16,
-    "route": "Ruta 4"
-  }
-}
-```
-
-Código HTTP:
-
 ```text
-200 OK
+STUDENT_NOT_FOUND
 ```
 
----
-
-### Eliminar un estudiante
+Cuando un estudiante no existe:
 
 ```http
-DELETE /students/:id
-```
-
-Ejemplo:
-
-```http
-DELETE http://localhost:3000/students/1
-```
-
-Respuesta:
-
-```text
-204 No Content
-```
-
----
-
-## 📄 Paginación
-
-El endpoint `GET /students` permite utilizar los parámetros:
-
-* `page`: número de página.
-* `limit`: cantidad de estudiantes por página.
-
-Ejemplo:
-
-```http
-GET http://localhost:3000/students?page=1&limit=2
-```
-
-Respuesta:
-
-```json
-{
-  "data": [
-    {
-      "id": 1,
-      "name": "Juan Pérez",
-      "age": 15,
-      "route": "Ruta 1"
-    },
-    {
-      "id": 2,
-      "name": "María Gómez",
-      "age": 16,
-      "route": "Ruta 2"
-    }
-  ],
-  "pagination": {
-    "page": 1,
-    "limit": 2,
-    "total": 2,
-    "totalPages": 1
-  }
-}
-```
-
-El límite máximo permitido es de `100` estudiantes por página.
-
----
-
-## ✅ Validaciones
-
-La API valida los datos enviados al crear o actualizar estudiantes.
-
-### Nombre
-
-* Debe ser un texto.
-* No puede estar vacío.
-
-### Edad
-
-* Debe ser un número entero.
-* Debe ser mayor que cero.
-
-### Ruta
-
-* Debe ser un texto.
-* No puede estar vacía.
-
-Ejemplo de solicitud inválida:
-
-```json
-{
-  "name": "",
-  "age": -5,
-  "route": ""
-}
-```
-
-Respuesta:
-
-```json
-{
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "El nombre es obligatorio"
-  }
-}
-```
-
----
-
-## ❌ Manejo de errores
-
-La API utiliza un formato uniforme para los errores:
-
-```json
-{
-  "error": {
-    "code": "ERROR_CODE",
-    "message": "Descripción del error"
-  }
-}
-```
-
-### Estudiante no encontrado
-
-Código HTTP:
-
-```text
 404 Not Found
 ```
 
@@ -550,152 +248,461 @@ Respuesta:
 }
 ```
 
-### ID inválido
+---
 
-Código HTTP:
+# ⚠️ Error Handler
 
-```text
+Todos los errores son procesados mediante un middleware centralizado.
+
+Se manejan principalmente:
+
+### Errores de validación
+
+```http
 400 Bad Request
 ```
 
-Respuesta:
+Ejemplo:
 
 ```json
 {
   "error": {
-    "code": "INVALID_ID",
-    "message": "El ID debe ser un número entero positivo"
+    "code": "VALIDATION_ERROR",
+    "message": "Los datos enviados no son válidos",
+    "details": []
   }
 }
+```
+
+### Recurso no encontrado
+
+```http
+404 Not Found
 ```
 
 ### Error interno
 
-Código HTTP:
-
-```text
+```http
 500 Internal Server Error
 ```
 
-Respuesta:
+---
+
+# 🔐 Autenticación
+
+Se implementó un middleware de autenticación mediante API Key.
+
+La petición debe incluir el header:
+
+```http
+x-api-key: 123456
+```
+
+Las peticiones que no proporcionen una API Key válida son rechazadas.
+
+---
+
+# 📊 Paginación
+
+El endpoint:
+
+```http
+GET /students
+```
+
+permite utilizar paginación mediante:
+
+```text
+?page=1&limit=10
+```
+
+Ejemplo:
+
+```http
+GET /students?page=1&limit=10
+```
+
+La respuesta incluye:
 
 ```json
 {
-  "error": {
-    "code": "INTERNAL_SERVER_ERROR",
-    "message": "Descripción del error"
+  "data": [],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 2,
+    "totalPages": 1
   }
 }
 ```
 
 ---
 
-## 📊 Códigos HTTP utilizados
+# 📝 Logging
 
-| Código | Descripción                     |
-| ------ | ------------------------------- |
-| `200`  | Solicitud exitosa               |
-| `201`  | Recurso creado                  |
-| `204`  | Recurso eliminado correctamente |
-| `400`  | Solicitud inválida              |
-| `404`  | Recurso no encontrado           |
-| `500`  | Error interno del servidor      |
+Se implementaron dos herramientas de logging:
+
+## Morgan
+
+Morgan registra información de las peticiones HTTP:
+
+```text
+GET /students
+POST /students
+PUT /students/:id
+DELETE /students/:id
+```
+
+## Winston
+
+Winston administra los logs de la aplicación.
+
+Se generan archivos:
+
+```text
+logs/
+├── combined.log
+└── error.log
+```
+
+Los logs incluyen información como:
+
+```text
+GET /students - 200 - 15ms
+```
+
+Esto permite conocer:
+
+* Método HTTP
+* Ruta
+* Código de respuesta
+* Tiempo de respuesta
 
 ---
 
-## 🧾 Middleware de logging
+# 🔄 Flujo de Middleware
 
-La API registra información de cada solicitud:
-
-* Método HTTP.
-* Ruta solicitada.
-* Duración de la solicitud.
-
-Ejemplo de log:
+La aplicación sigue el siguiente orden:
 
 ```text
-[GET] /students - 3ms
-[POST] /students - 2ms
-[DELETE] /students/1 - 1ms
+Request
+   ↓
+Express JSON
+   ↓
+Morgan
+   ↓
+Logger Middleware
+   ↓
+Auth Middleware
+   ↓
+Routes
+   ↓
+Validation
+   ↓
+Controller
+   ↓
+Service
+   ↓
+Repository
+   ↓
+Response
+   ↓
+Error Handler
+```
+
+Para rutas inexistentes:
+
+```text
+Request
+   ↓
+Not Found Middleware
+   ↓
+Error Handler
+   ↓
+404
 ```
 
 ---
 
-## 🧪 Pruebas realizadas
+# 📡 API
 
-La API fue probada utilizando Postman.
+## Obtener estudiantes
 
-Pruebas realizadas:
+```http
+GET /students
+```
 
-* Obtener todos los estudiantes.
-* Obtener un estudiante por ID.
-* Crear un estudiante.
-* Actualizar un estudiante.
-* Eliminar un estudiante.
-* Consultar un estudiante inexistente.
-* Enviar un ID inválido.
-* Probar la autenticación mediante API Key.
-* Probar la paginación.
-* Probar validaciones de datos.
-* Verificar respuestas y códigos HTTP.
+También permite:
 
----
+```http
+GET /students?page=1&limit=10
+```
 
-## 💾 Fuente de datos
+Respuesta:
 
-Actualmente los estudiantes se almacenan en un arreglo en memoria.
-
-Esto significa que:
-
-* Los datos se crean mientras el servidor está ejecutándose.
-* Los datos se pierden cuando se reinicia el servidor.
-* No se utiliza todavía una base de datos.
-
-En futuras versiones se puede integrar una base de datos como PostgreSQL o MongoDB.
+```http
+200 OK
+```
 
 ---
 
-## 📌 Estado del proyecto
+## Obtener estudiante por ID
 
-### Completado
+```http
+GET /students/1
+```
 
-* [x] Configuración de Node.js.
-* [x] Configuración de TypeScript.
-* [x] Configuración de pnpm.
-* [x] Ejercicio de callbacks.
-* [x] Ejercicio de Promises.
-* [x] Ejercicio de async/await.
-* [x] Servidor Express.
-* [x] CRUD de estudiantes.
-* [x] Arquitectura en capas.
-* [x] DTOs tipados.
-* [x] Paginación.
-* [x] Validaciones.
-* [x] Middleware de autenticación.
-* [x] Middleware de logging.
-* [x] Middleware global de errores.
-* [x] Pruebas en Postman.
+Respuesta exitosa:
 
-### Próximas mejoras
+```http
+200 OK
+```
 
-* [ ] Conectar una base de datos.
-* [ ] Agregar variables de entorno.
-* [ ] Agregar pruebas automatizadas.
-* [ ] Implementar documentación con Swagger.
-* [ ] Agregar más entidades: rutas, vehículos y conductores.
-* [ ] Implementar autenticación real.
-* [ ] Agregar paginación y filtros avanzados.
+Si no existe:
+
+```http
+404 Not Found
+```
+
+---
+
+## Crear estudiante
+
+```http
+POST /students
+```
+
+Header:
+
+```http
+Content-Type: application/json
+x-api-key: 123456
+```
+
+Body:
+
+```json
+{
+  "name": "Carlos Pérez",
+  "age": 15,
+  "route": "Ruta Norte"
+}
+```
+
+Respuesta:
+
+```http
+201 Created
+```
+
+---
+
+## Actualizar estudiante
+
+```http
+PUT /students/1
+```
+
+Body:
+
+```json
+{
+  "name": "Carlos Pérez",
+  "age": 16
+}
+```
+
+Respuesta:
+
+```http
+200 OK
+```
+
+---
+
+## Eliminar estudiante
+
+```http
+DELETE /students/1
+```
+
+Respuesta:
+
+```http
+204 No Content
+```
+
+---
+
+# 🧪 Pruebas
+
+Las funcionalidades de la API fueron probadas utilizando **Postman**.
+
+Se verificaron:
+
+* ✅ Obtener estudiantes
+* ✅ Obtener estudiante por ID
+* ✅ Crear estudiante
+* ✅ Actualizar estudiante
+* ✅ Eliminar estudiante
+* ✅ Validación de datos
+* ✅ IDs inválidos
+* ✅ Estudiantes inexistentes
+* ✅ API Key válida
+* ✅ API Key inválida
+* ✅ Rutas inexistentes
+* ✅ Paginación
+* ✅ Códigos HTTP
+* ✅ Manejo de errores
+* ✅ Logging
+
+---
+
+# ▶️ Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+```
+
+Entrar al proyecto:
+
+```bash
+cd trasporte-escolar
+```
+
+Instalar dependencias:
+
+```bash
+pnpm install
+```
+
+---
+
+# ▶️ Ejecución
+
+### Ejercicio 1
+
+```bash
+pnpm run exercise:1
+```
+
+### Ejercicio 2
+
+```bash
+pnpm run exercise:2
+```
+
+### Ejercicio 3
+
+```bash
+pnpm run exercise:3
+```
+
+El servidor estará disponible en:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# 🏗️ Compilar TypeScript
+
+Para comprobar que el proyecto no tiene errores de TypeScript:
+
+```bash
+pnpm exec tsc --noEmit
+```
+
+Para generar la versión compilada:
+
+```bash
+pnpm run build
+```
+
+Los archivos compilados se generan en:
+
+```text
+dist/
+```
+
+---
+
+# 📁 Estructura general
+
+```text
+trasporte-escolar/
+│
+├── src/
+│   ├── exercise-1/
+│   ├── exercise-2/
+│   └── exercise-3/
+│       ├── controllers/
+│       ├── dtos/
+│       ├── errors/
+│       ├── middlewares/
+│       ├── repositories/
+│       ├── routes/
+│       ├── schemas/
+│       ├── services/
+│       ├── types/
+│       ├── utils/
+│       ├── app.ts
+│       └── index.ts
+│
+├── logs/
+├── dist/
+├── package.json
+├── pnpm-lock.yaml
+├── tsconfig.json
+└── README.md
+```
+
+---
+
+# 🎯 Objetivos alcanzados
+
+* [x] Configuración de Node.js + TypeScript
+* [x] Uso de ES Modules
+* [x] Manejo de archivos con Node.js
+* [x] Callbacks
+* [x] Promises
+* [x] Async/Await
+* [x] Creación de servidor Express
+* [x] API REST
+* [x] CRUD de estudiantes
+* [x] Arquitectura Controller / Service / Repository
+* [x] DTOs
+* [x] Validación con Zod
+* [x] Manejo de errores personalizado
+* [x] Middleware de autenticación
+* [x] Middleware de logging
+* [x] Morgan
+* [x] Winston
+* [x] Paginación
+* [x] Respuestas HTTP correctas
+* [x] Pruebas con Postman
+* [x] Compilación TypeScript
+
+---
+
+# 🚧 Próximos pasos
+
+Entre las posibles mejoras futuras se encuentran:
+
+* Persistencia con una base de datos.
+* Implementación de rutas, vehículos y conductores.
+* Autenticación más robusta mediante JWT.
+* Tests automatizados.
+* Documentación con Swagger/OpenAPI.
+* Variables de entorno mediante `.env`.
+* Dockerización de la aplicación.
+* Deploy de la API.
 
 ---
 
 ## 👨‍💻 Autor
 
-**Angel Gomez**
-
-Proyecto académico desarrollado para el Bootcamp de Express - NodeJS.
-
----
-
-## 📄 Licencia
-
-Este proyecto fue desarrollado con fines educativos.
+Proyecto desarrollado como parte del proceso de formación en desarrollo backend con Node.js, TypeScript y Express.
