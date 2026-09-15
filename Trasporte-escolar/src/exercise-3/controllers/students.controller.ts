@@ -12,40 +12,18 @@ import type {
   UpdateStudentDTO
 } from "../dtos/student.dto.js";
 
+import type { Student } from "../types/student.types.js";
 import type {
   ApiResponse,
   PaginatedResponse
 } from "../types/api.types.js";
 
-import type { Student } from "../types/student.types.js";
-
 const repository = new StudentsRepository();
 const service = new StudentsService(repository);
 
-export function getStudents(
-  req: Request,
-  res: Response
-): void {
+export function getStudents(req: Request, res: Response): void {
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 10;
-
-  if (
-    !Number.isInteger(page) ||
-    !Number.isInteger(limit) ||
-    page < 1 ||
-    limit < 1 ||
-    limit > 100
-  ) {
-    res.status(400).json({
-      error: {
-        code: "INVALID_PAGINATION",
-        message:
-          "page debe ser un entero mayor que 0 y limit debe estar entre 1 y 100"
-      }
-    });
-
-    return;
-  }
 
   const result = service.getPaginated(page, limit);
 
@@ -55,8 +33,8 @@ export function getStudents(
       page,
       limit,
       total: result.total,
-      totalPages: Math.ceil(result.total / limit)
-    }
+      totalPages: Math.ceil(result.total / limit),
+    },
   };
 
   res.status(200).json(response);
@@ -69,18 +47,6 @@ export function getStudentById(
 ): void {
   try {
     const id = Number(req.params.id);
-
-    if (!Number.isInteger(id) || id <= 0) {
-      res.status(400).json({
-        error: {
-          code: "INVALID_ID",
-          message: "El ID debe ser un número entero positivo"
-        }
-      });
-
-      return;
-    }
-
     const student = service.getById(id);
 
     const response: ApiResponse<Student> = {
@@ -100,7 +66,6 @@ export function createStudent(
 ): void {
   try {
     const data: CreateStudentDTO = req.body;
-
     const student = service.create(data);
 
     const response: ApiResponse<Student> = {
@@ -120,18 +85,6 @@ export function updateStudent(
 ): void {
   try {
     const id = Number(req.params.id);
-
-    if (!Number.isInteger(id) || id <= 0) {
-      res.status(400).json({
-        error: {
-          code: "INVALID_ID",
-          message: "El ID debe ser un número entero positivo"
-        }
-      });
-
-      return;
-    }
-
     const data: UpdateStudentDTO = req.body;
 
     const student = service.update(id, data);
@@ -153,17 +106,6 @@ export function deleteStudent(
 ): void {
   try {
     const id = Number(req.params.id);
-
-    if (!Number.isInteger(id) || id <= 0) {
-      res.status(400).json({
-        error: {
-          code: "INVALID_ID",
-          message: "El ID debe ser un número entero positivo"
-        }
-      });
-
-      return;
-    }
 
     service.delete(id);
 

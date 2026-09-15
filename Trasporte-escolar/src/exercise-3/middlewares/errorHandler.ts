@@ -4,41 +4,48 @@ import type {
   NextFunction
 } from "express";
 
-import type { ApiErrorResponse } from "../types/api.types.js";
+import { ZodError } from "zod";
+import { AppError } from "../errors/AppError.js";
+import { logger } from "../utils/logger.js";
 
 export function errorHandler(
-  error: Error,
+  error: unknown,
   req: Request,
   res: Response,
   next: NextFunction
 ): void {
-  console.error("Error:", error.message);
+  logger.error(error);
 
-  let statusCode = 500;
-  let errorCode = "INTERNAL_SERVER_ERROR";
+  if (error instanceof ZodError) {
+    res.status(400).json({
+      error: {
+        code: "VALIDATION_ERROR",
+        message: "Los datos enviados no son válidos",
+        details: error.issues.map((issue) => ({
+          field: issue.path.join("."),
+          message: issue.message
+        }))
+      }
+    });
 
-  if (error.message === "Estudiante no encontrado") {
-    statusCode = 404;
-    errorCode = "STUDENT_NOT_FOUND";
+    return;
   }
 
-  if (
-    error.message === "El nombre es obligatorio" ||
-    error.message === "La edad debe ser un número entero positivo" ||
-    error.message === "La ruta es obligatoria" ||
-    error.message === "El nombre no puede estar vacío" ||
-    error.message === "La ruta no puede estar vacía"
-  ) {
-    statusCode = 400;
-    errorCode = "VALIDATION_ERROR";
+  if (error instanceof AppError) {
+    res.status(error.statusCode).json({
+      error: {
+        code: error.code,
+        message: error.message
+      }
+    });
+
+    return;
   }
 
-  const response: ApiErrorResponse = {
+  res.status(500).json({
     error: {
-      code: errorCode,
-      message: error.message
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Ocurrió un error interno en el servidor"
     }
-  };
-
-  res.status(statusCode).json(response);
+  });
 }

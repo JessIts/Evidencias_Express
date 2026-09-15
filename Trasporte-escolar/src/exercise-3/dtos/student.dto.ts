@@ -1,11 +1,16 @@
-export interface CreateStudentDTO {
-  name: string;
-  age: number;
-  route: string;
-}
+import type {
+  z
+} from "zod";
 
-export interface UpdateStudentDTO {
-  name?: string;
-  age?: number;
-  route?: string;
-}
+import {
+  createStudentSchema,
+  updateStudentSchema
+} from "../schemas/student.schema.js";
+
+export type CreateStudentDTO = z.infer<
+  typeof createStudentSchema
+>;
+
+export type UpdateStudentDTO = z.infer<
+  typeof updateStudentSchema
+>;

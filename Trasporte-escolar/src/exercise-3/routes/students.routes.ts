@@ -8,16 +8,50 @@ import {
   deleteStudent
 } from "../controllers/students.controller.js";
 
+import {
+  validateBody,
+  validateParams,
+  validateQuery
+} from "../middlewares/validate.js";
+
+import {
+  createStudentSchema,
+  updateStudentSchema,
+  studentIdSchema,
+  paginationSchema
+} from "../schemas/student.schema.js";
+
 const router = Router();
 
-router.get("/", getStudents);
+router.get(
+  "/",
+  validateQuery(paginationSchema),
+  getStudents
+);
 
-router.get("/:id", getStudentById);
+router.get(
+  "/:id",
+  validateParams(studentIdSchema),
+  getStudentById
+);
 
-router.post("/", createStudent);
+router.post(
+  "/",
+  validateBody(createStudentSchema),
+  createStudent
+);
 
-router.put("/:id", updateStudent);
+router.put(
+  "/:id",
+  validateParams(studentIdSchema),
+  validateBody(updateStudentSchema),
+  updateStudent
+);
 
-router.delete("/:id", deleteStudent);
+router.delete(
+  "/:id",
+  validateParams(studentIdSchema),
+  deleteStudent
+);
 
 export default router;
