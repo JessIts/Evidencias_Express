@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Route {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  students  Student[]
+  drivers   Driver[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("routes")
+}
+
+model Student {
+  id        Int      @id @default(autoincrement())
+  name      String
+  age       Int
+  routeId   Int
+  route     Route    @relation(fields: [routeId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([routeId])
+  @@map("students")
+}
+
+model Driver {
+  id            Int      @id @default(autoincrement())
+  name          String
+  licenseNumber String   @unique
+  phone         String?
+  routes        Route[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("drivers")
+}

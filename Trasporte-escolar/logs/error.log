@@ -1,0 +1,209 @@
+2026-09-15T18:14:57.187Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:15:14.447Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:15:46.101Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:19:46.049Z [error]: [
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "name"
+    ],
+    "message": "El nombre es obligatorio"
+  },
+  {
+    "origin": "number",
+    "code": "too_small",
+    "minimum": 0,
+    "inclusive": false,
+    "path": [
+      "age"
+    ],
+    "message": "La edad debe ser mayor que cero"
+  },
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "route"
+    ],
+    "message": "La ruta es obligatoria"
+  }
+]
+2026-09-15T18:20:15.380Z [error]: Estudiante no encontrado
+2026-09-15T18:20:33.816Z [error]: Ruta no encontrada: GET /ruta-inexistnte
+2026-10-14T15:57:30.348Z [error]: Ruta no encontrada: PATCH /students/1
+2026-10-14T15:58:04.419Z [error]: Ruta no encontrada: PATCH /students/1
+2026-10-14T16:07:40.090Z [error]: Ruta no encontrada: POST /routes
+2026-10-14T16:08:34.381Z [error]: Ruta no encontrada: GET /routes
+2026-10-14T16:13:57.281Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:14:03.520Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:14:21.442Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:14:27.940Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:15:05.430Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:15:05.709Z [error]: Ruta no encontrada
+2026-10-14T16:15:07.175Z [error]: [
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "name"
+    ],
+    "message": "El nombre es obligatorio"
+  }
+]
+2026-10-14T16:15:15.856Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "path": [
+      "routeId"
+    ],
+    "message": "El ID de la ruta debe ser un número"
+  }
+]
+2026-10-14T16:15:16.132Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:15:16.364Z [error]: Ruta no encontrada: DELETE /students/
+2026-10-14T16:15:16.451Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:15:16.597Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:16:38.638Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:17:07.530Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:17:14.091Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:19:51.196Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:20:30.398Z [error]: 
+Invalid `prisma.route.delete()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:51:26
+
+  48 
+  49 async delete(id: number): Promise<boolean> {
+  50   try {
+→ 51     await prisma.route.delete(
+Foreign key constraint violated on the constraint: `students_routeId_fkey`
+2026-10-14T16:20:31.022Z [error]: Ruta no encontrada
+2026-10-14T16:25:03.454Z [error]: Conductor no encontrado
+2026-10-14T16:25:03.645Z [error]: Ruta no encontrada
+2026-10-14T16:25:03.847Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "received": "NaN",
+    "path": [
+      "id"
+    ],
+    "message": "El ID del conductor debe ser un número"
+  }
+]
+2026-10-14T16:25:04.401Z [error]: 
+Invalid `prisma.driver.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\drivers.repository.ts:37:26
+
+  34 }
+  35 
+  36 create(data: CreateDriverDTO): Promise<DriverWithRoutes> {
+→ 37   return prisma.driver.create(
+Unique constraint failed on the constraint: `drivers_licenseNumber_key`
+2026-10-14T16:25:04.780Z [error]: Conductor no encontrado
+2026-10-14T16:35:20.153Z [error]: [
+  {
+    "code": "invalid_value",
+    "values": [
+      "id",
+      "name",
+      "age",
+      "createdAt"
+    ],
+    "path": [
+      "sortBy"
+    ],
+    "message": "sortBy debe ser id, name, age o createdAt"
+  }
+]
+2026-10-14T16:35:20.267Z [error]: [
+  {
+    "code": "invalid_value",
+    "values": [
+      "asc",
+      "desc"
+    ],
+    "path": [
+      "order"
+    ],
+    "message": "order debe ser asc o desc"
+  }
+]
+2026-10-14T16:35:20.404Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "received": "NaN",
+    "path": [
+      "routeId"
+    ],
+    "message": "Invalid input: expected number, received NaN"
+  }
+]
+2026-10-14T16:35:21.714Z [error]: [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 100,
+    "inclusive": true,
+    "path": [
+      "limit"
+    ],
+    "message": "limit no puede ser mayor que 100"
+  }
+]

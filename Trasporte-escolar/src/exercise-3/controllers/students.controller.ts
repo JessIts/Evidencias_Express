@@ -6,6 +6,7 @@ import type {
 
 import { StudentsRepository } from "../repositories/students.repository.js";
 import { StudentsService } from "../services/student.services.js";
+import { studentQuerySchema } from "../schemas/student.schema.js";
 
 import type {
   CreateStudentDTO,
@@ -21,36 +22,24 @@ import type {
 const repository = new StudentsRepository();
 const service = new StudentsService(repository);
 
-export function getStudents(req: Request, res: Response): void {
-  const page = Number(req.query.page) || 1;
-  const limit = Number(req.query.limit) || 10;
-
-  const result = service.getPaginated(page, limit);
-
-  const response: PaginatedResponse<Student> = {
-    data: result.students,
-    pagination: {
-      page,
-      limit,
-      total: result.total,
-      totalPages: Math.ceil(result.total / limit),
-    },
-  };
-
-  res.status(200).json(response);
-}
-
-export function getStudentById(
+export async function getStudents(
   req: Request,
   res: Response,
   next: NextFunction
-): void {
+): Promise<void> {
   try {
-    const id = Number(req.params.id);
-    const student = service.getById(id);
+    const query = studentQuerySchema.parse(req.query);
 
-    const response: ApiResponse<Student> = {
-      data: student
+    const result = await service.getPaginated(query);
+
+    const response: PaginatedResponse<Student> = {
+      data: result.students,
+      pagination: {
+        page: query.page,
+        limit: query.limit,
+        total: result.total,
+        totalPages: Math.ceil(result.total / query.limit)
+      }
     };
 
     res.status(200).json(response);
@@ -59,18 +48,33 @@ export function getStudentById(
   }
 }
 
-export function createStudent(
+export async function getStudentById(
   req: Request,
   res: Response,
   next: NextFunction
-): void {
+): Promise<void> {
+  try {
+    const id = Number(req.params.id);
+    const student = await service.getById(id);
+
+    const response: ApiResponse<Student> = { data: student };
+
+    res.status(200).json(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function createStudent(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
   try {
     const data: CreateStudentDTO = req.body;
-    const student = service.create(data);
+    const student = await service.create(data);
 
-    const response: ApiResponse<Student> = {
-      data: student
-    };
+    const response: ApiResponse<Student> = { data: student };
 
     res.status(201).json(response);
   } catch (error) {
@@ -78,20 +82,18 @@ export function createStudent(
   }
 }
 
-export function updateStudent(
+export async function updateStudent(
   req: Request,
   res: Response,
   next: NextFunction
-): void {
+): Promise<void> {
   try {
     const id = Number(req.params.id);
     const data: UpdateStudentDTO = req.body;
 
-    const student = service.update(id, data);
+    const student = await service.update(id, data);
 
-    const response: ApiResponse<Student> = {
-      data: student
-    };
+    const response: ApiResponse<Student> = { data: student };
 
     res.status(200).json(response);
   } catch (error) {
@@ -99,15 +101,15 @@ export function updateStudent(
   }
 }
 
-export function deleteStudent(
+export async function deleteStudent(
   req: Request,
   res: Response,
   next: NextFunction
-): void {
+): Promise<void> {
   try {
     const id = Number(req.params.id);
 
-    service.delete(id);
+    await service.delete(id);
 
     res.status(204).send();
   } catch (error) {

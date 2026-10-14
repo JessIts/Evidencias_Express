@@ -1,7 +1,8 @@
 import { StudentsRepository } from "../repositories/students.repository.js";
 import type {
   CreateStudentDTO,
-  UpdateStudentDTO
+  UpdateStudentDTO,
+  StudentQueryDTO
 } from "../dtos/student.dto.js";
 
 import type { Student } from "../types/student.types.js";
@@ -12,28 +13,19 @@ export class StudentsService {
     private readonly repository: StudentsRepository
   ) {}
 
-  getPaginated(
-    page: number,
-    limit: number
-  ): {
-    students: Student[];
-    total: number;
-  } {
-    const students = this.repository.findPaginated(
-      page,
-      limit
-    );
+  async getPaginated(
+    query: StudentQueryDTO
+  ): Promise<{ students: Student[]; total: number }> {
+    const [students, total] = await Promise.all([
+      this.repository.findPaginated(query),
+      this.repository.count(query)
+    ]);
 
-    const total = this.repository.count();
-
-    return {
-      students,
-      total
-    };
+    return { students, total };
   }
 
-  getById(id: number): Student {
-    const student = this.repository.findById(id);
+  async getById(id: number): Promise<Student> {
+    const student = await this.repository.findById(id);
 
     if (!student) {
       throw new AppError(
@@ -46,15 +38,15 @@ export class StudentsService {
     return student;
   }
 
-  create(data: CreateStudentDTO): Student {
+  create(data: CreateStudentDTO): Promise<Student> {
     return this.repository.create(data);
   }
 
-  update(
+  async update(
     id: number,
     data: UpdateStudentDTO
-  ): Student {
-    const student = this.repository.update(id, data);
+  ): Promise<Student> {
+    const student = await this.repository.update(id, data);
 
     if (!student) {
       throw new AppError(
@@ -67,8 +59,8 @@ export class StudentsService {
     return student;
   }
 
-  delete(id: number): void {
-    const deleted = this.repository.delete(id);
+  async delete(id: number): Promise<void> {
+    const deleted = await this.repository.delete(id);
 
     if (!deleted) {
       throw new AppError(

@@ -1,16 +1,13 @@
-import type {
-  z
-} from "zod";
+import type { z } from "zod";
 
 import {
   createStudentSchema,
-  updateStudentSchema
+  updateStudentSchema,
+  studentQuerySchema
 } from "../schemas/student.schema.js";
 
-export type CreateStudentDTO = z.infer<
-  typeof createStudentSchema
->;
+export type CreateStudentDTO = z.infer<typeof createStudentSchema>;
 
-export type UpdateStudentDTO = z.infer<
-  typeof updateStudentSchema
->;
+export type UpdateStudentDTO = z.infer<typeof updateStudentSchema>;
+
+export type StudentQueryDTO = z.infer<typeof studentQuerySchema>;

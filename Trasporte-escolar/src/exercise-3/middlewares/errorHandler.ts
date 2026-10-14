@@ -6,6 +6,7 @@ import type {
 
 import { ZodError } from "zod";
 import { AppError } from "../errors/AppError.js";
+import { mapPrismaError } from "../utils/prismaErrors.js";
 import { logger } from "../utils/logger.js";
 
 export function errorHandler(
@@ -15,6 +16,12 @@ export function errorHandler(
   next: NextFunction
 ): void {
   logger.error(error);
+
+  // Si ya se envió una respuesta, Express debe cerrar la conexión
+  if (res.headersSent) {
+    next(error);
+    return;
+  }
 
   if (error instanceof ZodError) {
     res.status(400).json({
@@ -31,11 +38,14 @@ export function errorHandler(
     return;
   }
 
-  if (error instanceof AppError) {
-    res.status(error.statusCode).json({
+  const appError =
+    error instanceof AppError ? error : mapPrismaError(error);
+
+  if (appError) {
+    res.status(appError.statusCode).json({
       error: {
-        code: error.code,
-        message: error.message
+        code: appError.code,
+        message: appError.message
       }
     });
 

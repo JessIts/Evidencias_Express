@@ -2,5 +2,7 @@ export interface Student {
   id: number;
   name: string;
   age: number;
-  route: string;
+  routeId: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

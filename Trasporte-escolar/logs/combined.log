@@ -1,0 +1,377 @@
+2026-09-15T18:14:57.187Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:14:57.200Z [info]: ::1 - - [15/Sep/2026:18:14:57 +0000] "GET /students HTTP/1.1" 500 95 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:14:57.202Z [info]: GET /students - 500 - 19ms
+2026-09-15T18:15:14.447Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:15:14.450Z [info]: ::1 - - [15/Sep/2026:18:15:14 +0000] "GET /students HTTP/1.1" 500 95 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:15:14.451Z [info]: GET /students - 500 - 4ms
+2026-09-15T18:15:46.101Z [error]: Cannot set property query of #<IncomingMessage> which has only a getter
+2026-09-15T18:15:46.160Z [info]: ::1 - - [15/Sep/2026:18:15:46 +0000] "GET /students HTTP/1.1" 500 95 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:15:46.162Z [info]: GET /students - 500 - 70ms
+2026-09-15T18:17:14.526Z [info]: ::1 - - [15/Sep/2026:18:17:14 +0000] "GET /students HTTP/1.1" 200 184 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:17:14.529Z [info]: GET /students - 200 - 16ms
+2026-09-15T18:18:13.119Z [info]: ::1 - - [15/Sep/2026:18:18:13 +0000] "POST /students HTTP/1.1" 201 68 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:18:13.120Z [info]: POST /students - 201 - 5ms
+2026-09-15T18:18:32.276Z [info]: ::1 - - [15/Sep/2026:18:18:32 +0000] "GET /students HTTP/1.1" 200 244 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:18:32.277Z [info]: GET /students - 200 - 2ms
+2026-09-15T18:19:24.016Z [info]: ::1 - - [15/Sep/2026:18:19:24 +0000] "POST /students HTTP/1.1" 201 68 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:19:24.016Z [info]: POST /students - 201 - 3ms
+2026-09-15T18:19:46.049Z [error]: [
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "name"
+    ],
+    "message": "El nombre es obligatorio"
+  },
+  {
+    "origin": "number",
+    "code": "too_small",
+    "minimum": 0,
+    "inclusive": false,
+    "path": [
+      "age"
+    ],
+    "message": "La edad debe ser mayor que cero"
+  },
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "route"
+    ],
+    "message": "La ruta es obligatoria"
+  }
+]
+2026-09-15T18:19:46.052Z [info]: ::1 - - [15/Sep/2026:18:19:46 +0000] "POST /students HTTP/1.1" 400 263 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:19:46.053Z [info]: POST /students - 400 - 6ms
+2026-09-15T18:20:15.380Z [error]: Estudiante no encontrado
+2026-09-15T18:20:15.383Z [info]: ::1 - - [15/Sep/2026:18:20:15 +0000] "GET /students/999 HTTP/1.1" 404 75 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:20:15.384Z [info]: GET /students/999 - 404 - 6ms
+2026-09-15T18:20:33.816Z [error]: Ruta no encontrada: GET /ruta-inexistnte
+2026-09-15T18:20:33.818Z [info]: ::1 - - [15/Sep/2026:18:20:33 +0000] "GET /ruta-inexistnte HTTP/1.1" 404 89 "-" "PostmanRuntime/7.49.1"
+2026-09-15T18:20:33.818Z [info]: GET /ruta-inexistnte - 404 - 2ms
+2026-10-14T15:51:59.891Z [info]: ::1 - - [14/Oct/2026:15:51:59 +0000] "GET /students HTTP/1.1" 401 39 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:51:59.895Z [info]: GET /students - 401 - 18ms
+2026-10-14T15:52:22.363Z [info]: ::1 - - [14/Oct/2026:15:52:22 +0000] "GET /students HTTP/1.1" 401 39 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:52:22.364Z [info]: GET /students - 401 - 2ms
+2026-10-14T15:54:26.263Z [info]: ::1 - - [14/Oct/2026:15:54:26 +0000] "GET /students HTTP/1.1" 401 39 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:54:26.264Z [info]: GET /students - 401 - 2ms
+2026-10-14T15:55:14.975Z [info]: ::1 - - [14/Oct/2026:15:55:14 +0000] "GET /students HTTP/1.1" 200 71 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:55:14.975Z [info]: GET /students - 200 - 361ms
+2026-10-14T15:55:44.422Z [info]: ::1 - - [14/Oct/2026:15:55:44 +0000] "POST /students HTTP/1.1" 201 134 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:55:44.423Z [info]: POST /students - 201 - 72ms
+2026-10-14T15:56:55.213Z [info]: ::1 - - [14/Oct/2026:15:56:55 +0000] "GET /students/1 HTTP/1.1" 200 134 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:56:55.213Z [info]: GET /students/1 - 200 - 32ms
+2026-10-14T15:57:07.101Z [info]: ::1 - - [14/Oct/2026:15:57:07 +0000] "GET /students?page=1&limit=1 HTTP/1.1" 200 195 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:57:07.102Z [info]: GET /students?page=1&limit=1 - 200 - 33ms
+2026-10-14T15:57:30.348Z [error]: Ruta no encontrada: PATCH /students/1
+2026-10-14T15:57:30.350Z [info]: ::1 - - [14/Oct/2026:15:57:30 +0000] "PATCH /students/1 HTTP/1.1" 404 86 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:57:30.350Z [info]: PATCH /students/1 - 404 - 3ms
+2026-10-14T15:58:04.419Z [error]: Ruta no encontrada: PATCH /students/1
+2026-10-14T15:58:04.422Z [info]: ::1 - - [14/Oct/2026:15:58:04 +0000] "PATCH /students/1 HTTP/1.1" 404 86 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:58:04.424Z [info]: PATCH /students/1 - 404 - 5ms
+2026-10-14T15:58:58.129Z [info]: ::1 - - [14/Oct/2026:15:58:58 +0000] "PUT /students/1 HTTP/1.1" 200 134 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T15:58:58.130Z [info]: PUT /students/1 - 200 - 36ms
+2026-10-14T16:07:40.090Z [error]: Ruta no encontrada: POST /routes
+2026-10-14T16:07:40.092Z [info]: ::1 - - [14/Oct/2026:16:07:40 +0000] "POST /routes HTTP/1.1" 404 81 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:07:40.092Z [info]: POST /routes - 404 - 2ms
+2026-10-14T16:08:34.381Z [error]: Ruta no encontrada: GET /routes
+2026-10-14T16:08:34.383Z [info]: ::1 - - [14/Oct/2026:16:08:34 +0000] "GET /routes HTTP/1.1" 404 80 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:08:34.383Z [info]: GET /routes - 404 - 2ms
+2026-10-14T16:11:05.081Z [info]: ::1 - - [14/Oct/2026:16:11:05 +0000] "POST /routes HTTP/1.1" 201 111 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:11:05.084Z [info]: POST /routes - 201 - 321ms
+2026-10-14T16:11:15.056Z [info]: ::1 - - [14/Oct/2026:16:11:15 +0000] "GET /routes HTTP/1.1" 200 379 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:11:15.057Z [info]: GET /routes - 200 - 71ms
+2026-10-14T16:11:45.751Z [info]: ::1 - - [14/Oct/2026:16:11:45 +0000] "GET /routes/1 HTTP/1.1" 200 111 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:11:45.752Z [info]: GET /routes/1 - 200 - 52ms
+2026-10-14T16:12:03.135Z [info]: ::1 - - [14/Oct/2026:16:12:03 +0000] "PUT /routes/1 HTTP/1.1" 200 115 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:12:03.137Z [info]: PUT /routes/1 - 200 - 49ms
+2026-10-14T16:13:57.281Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:13:57.284Z [info]: ::1 - - [14/Oct/2026:16:13:57 +0000] "POST /routes HTTP/1.1" 409 95 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:13:57.285Z [info]: POST /routes - 409 - 126ms
+2026-10-14T16:13:57.682Z [info]: ::1 - - [14/Oct/2026:16:13:57 +0000] "GET /routes?page=1&limit=2 HTTP/1.1" 200 279 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:13:57.683Z [info]: GET /routes?page=1&limit=2 - 200 - 43ms
+2026-10-14T16:13:57.777Z [info]: ::1 - - [14/Oct/2026:16:13:57 +0000] "GET /routes/ HTTP/1.1" 200 383 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:13:57.780Z [info]: GET /routes/ - 200 - 15ms
+2026-10-14T16:14:03.520Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:14:03.523Z [info]: ::1 - - [14/Oct/2026:16:14:03 +0000] "PUT /routes/ HTTP/1.1" 404 81 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:14:03.527Z [info]: PUT /routes/ - 404 - 7ms
+2026-10-14T16:14:21.442Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:14:21.444Z [info]: ::1 - - [14/Oct/2026:16:14:21 +0000] "POST /routes HTTP/1.1" 409 95 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:14:21.445Z [info]: POST /routes - 409 - 40ms
+2026-10-14T16:14:21.657Z [info]: ::1 - - [14/Oct/2026:16:14:21 +0000] "GET /routes?page=1&limit=2 HTTP/1.1" 200 279 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:14:21.658Z [info]: GET /routes?page=1&limit=2 - 200 - 39ms
+2026-10-14T16:14:21.725Z [info]: ::1 - - [14/Oct/2026:16:14:21 +0000] "GET /routes/ HTTP/1.1" 200 383 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:14:21.725Z [info]: GET /routes/ - 200 - 8ms
+2026-10-14T16:14:27.940Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:14:27.942Z [info]: ::1 - - [14/Oct/2026:16:14:27 +0000] "PUT /routes/ HTTP/1.1" 404 81 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:14:27.942Z [info]: PUT /routes/ - 404 - 2ms
+2026-10-14T16:15:05.430Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:15:05.433Z [info]: ::1 - - [14/Oct/2026:16:15:05 +0000] "POST /routes HTTP/1.1" 409 95 "-" "curl/8.13.0"
+2026-10-14T16:15:05.434Z [info]: POST /routes - 409 - 24ms
+2026-10-14T16:15:05.709Z [error]: Ruta no encontrada
+2026-10-14T16:15:05.712Z [info]: ::1 - - [14/Oct/2026:16:15:05 +0000] "GET /routes/9999 HTTP/1.1" 404 76 "-" "curl/8.13.0"
+2026-10-14T16:15:05.713Z [info]: GET /routes/9999 - 404 - 32ms
+2026-10-14T16:15:07.175Z [error]: [
+  {
+    "origin": "string",
+    "code": "too_small",
+    "minimum": 1,
+    "inclusive": true,
+    "path": [
+      "name"
+    ],
+    "message": "El nombre es obligatorio"
+  }
+]
+2026-10-14T16:15:07.177Z [info]: ::1 - - [14/Oct/2026:16:15:07 +0000] "POST /routes HTTP/1.1" 400 150 "-" "curl/8.13.0"
+2026-10-14T16:15:07.178Z [info]: POST /routes - 400 - 4ms
+2026-10-14T16:15:15.856Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "path": [
+      "routeId"
+    ],
+    "message": "El ID de la ruta debe ser un número"
+  }
+]
+2026-10-14T16:15:15.857Z [info]: ::1 - - [14/Oct/2026:16:15:15 +0000] "POST /students HTTP/1.1" 400 165 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:15:15.859Z [info]: POST /students - 400 - 6ms
+2026-10-14T16:15:16.132Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:15:16.134Z [info]: ::1 - - [14/Oct/2026:16:15:16 +0000] "DELETE /routes/ HTTP/1.1" 404 84 "-" "curl/8.13.0"
+2026-10-14T16:15:16.134Z [info]: DELETE /routes/ - 404 - 2ms
+2026-10-14T16:15:16.364Z [error]: Ruta no encontrada: DELETE /students/
+2026-10-14T16:15:16.365Z [info]: ::1 - - [14/Oct/2026:16:15:16 +0000] "DELETE /students/ HTTP/1.1" 404 86 "-" "curl/8.13.0"
+2026-10-14T16:15:16.366Z [info]: DELETE /students/ - 404 - 3ms
+2026-10-14T16:15:16.451Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:15:16.453Z [info]: ::1 - - [14/Oct/2026:16:15:16 +0000] "DELETE /routes/ HTTP/1.1" 404 84 "-" "curl/8.13.0"
+2026-10-14T16:15:16.464Z [info]: DELETE /routes/ - 404 - 13ms
+2026-10-14T16:15:16.597Z [error]: Ruta no encontrada: DELETE /routes/
+2026-10-14T16:15:16.600Z [info]: ::1 - - [14/Oct/2026:16:15:16 +0000] "DELETE /routes/ HTTP/1.1" 404 84 "-" "curl/8.13.0"
+2026-10-14T16:15:16.600Z [info]: DELETE /routes/ - 404 - 3ms
+2026-10-14T16:16:38.638Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:16:38.641Z [info]: ::1 - - [14/Oct/2026:16:16:38 +0000] "POST /routes HTTP/1.1" 409 95 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:16:38.642Z [info]: POST /routes - 409 - 36ms
+2026-10-14T16:16:38.862Z [info]: ::1 - - [14/Oct/2026:16:16:38 +0000] "GET /routes?page=1&limit=2 HTTP/1.1" 200 279 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:16:38.863Z [info]: GET /routes?page=1&limit=2 - 200 - 35ms
+2026-10-14T16:16:38.913Z [info]: ::1 - - [14/Oct/2026:16:16:38 +0000] "GET /routes/ HTTP/1.1" 200 383 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:16:38.919Z [info]: GET /routes/ - 200 - 11ms
+2026-10-14T16:17:07.530Z [error]: Ruta no encontrada: PUT /routes/
+2026-10-14T16:17:07.531Z [info]: ::1 - - [14/Oct/2026:16:17:07 +0000] "PUT /routes/ HTTP/1.1" 404 81 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:17:07.532Z [info]: PUT /routes/ - 404 - 2ms
+2026-10-14T16:17:14.091Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:17:14.093Z [info]: ::1 - - [14/Oct/2026:16:17:14 +0000] "POST /routes HTTP/1.1" 409 95 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:17:14.094Z [info]: POST /routes - 409 - 29ms
+2026-10-14T16:19:13.077Z [info]: ::1 - - [14/Oct/2026:16:19:13 +0000] "POST /routes HTTP/1.1" 201 127 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:19:13.080Z [info]: POST /routes - 201 - 246ms
+2026-10-14T16:19:51.196Z [error]: 
+Invalid `prisma.route.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:28:25
+
+  25 }
+  26 
+  27 create(data: CreateRouteDTO): Promise<Route> {
+→ 28   return prisma.route.create(
+Unique constraint failed on the constraint: `routes_name_key`
+2026-10-14T16:19:51.200Z [info]: ::1 - - [14/Oct/2026:16:19:51 +0000] "POST /routes HTTP/1.1" 409 97 "-" "curl/8.13.0"
+2026-10-14T16:19:51.201Z [info]: POST /routes - 409 - 124ms
+2026-10-14T16:20:30.016Z [info]: ::1 - - [14/Oct/2026:16:20:30 +0000] "POST /routes HTTP/1.1" 201 128 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:20:30.017Z [info]: POST /routes - 201 - 59ms
+2026-10-14T16:20:30.202Z [info]: ::1 - - [14/Oct/2026:16:20:30 +0000] "POST /students HTTP/1.1" 201 136 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:20:30.204Z [info]: POST /students - 201 - 23ms
+2026-10-14T16:20:30.398Z [error]: 
+Invalid `prisma.route.delete()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\routes.repository.ts:51:26
+
+  48 
+  49 async delete(id: number): Promise<boolean> {
+  50   try {
+→ 51     await prisma.route.delete(
+Foreign key constraint violated on the constraint: `students_routeId_fkey`
+2026-10-14T16:20:30.400Z [info]: ::1 - - [14/Oct/2026:16:20:30 +0000] "DELETE /routes/11 HTTP/1.1" 409 103 "-" "curl/8.13.0"
+2026-10-14T16:20:30.401Z [info]: DELETE /routes/11 - 409 - 33ms
+2026-10-14T16:20:30.864Z [info]: ::1 - - [14/Oct/2026:16:20:30 +0000] "DELETE /students/2 HTTP/1.1" 204 - "-" "curl/8.13.0"
+2026-10-14T16:20:30.865Z [info]: DELETE /students/2 - 204 - 62ms
+2026-10-14T16:20:30.947Z [info]: ::1 - - [14/Oct/2026:16:20:30 +0000] "DELETE /routes/11 HTTP/1.1" 204 - "-" "curl/8.13.0"
+2026-10-14T16:20:30.948Z [info]: DELETE /routes/11 - 204 - 16ms
+2026-10-14T16:20:31.022Z [error]: Ruta no encontrada
+2026-10-14T16:20:31.024Z [info]: ::1 - - [14/Oct/2026:16:20:31 +0000] "DELETE /routes/11 HTTP/1.1" 404 76 "-" "curl/8.13.0"
+2026-10-14T16:20:31.025Z [info]: DELETE /routes/11 - 404 - 8ms
+2026-10-14T16:24:54.862Z [info]: ::1 - - [14/Oct/2026:16:24:54 +0000] "POST /drivers HTTP/1.1" 201 183 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:54.865Z [info]: POST /drivers - 201 - 518ms
+2026-10-14T16:24:55.235Z [info]: ::1 - - [14/Oct/2026:16:24:55 +0000] "GET /routes?page=1&limit=1 HTTP/1.1" 200 176 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:55.236Z [info]: GET /routes?page=1&limit=1 - 200 - 55ms
+2026-10-14T16:24:55.431Z [info]: ::1 - - [14/Oct/2026:16:24:55 +0000] "PUT /drivers/1/routes/1 HTTP/1.1" 200 289 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:55.432Z [info]: PUT /drivers/1/routes/1 - 200 - 60ms
+2026-10-14T16:24:55.643Z [info]: ::1 - - [14/Oct/2026:16:24:55 +0000] "GET /drivers/1 HTTP/1.1" 200 289 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:55.647Z [info]: GET /drivers/1 - 200 - 15ms
+2026-10-14T16:24:55.753Z [info]: ::1 - - [14/Oct/2026:16:24:55 +0000] "GET /drivers HTTP/1.1" 200 351 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:55.754Z [info]: GET /drivers - 200 - 20ms
+2026-10-14T16:24:56.002Z [info]: ::1 - - [14/Oct/2026:16:24:56 +0000] "PUT /drivers/1 HTTP/1.1" 200 289 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:56.002Z [info]: PUT /drivers/1 - 200 - 21ms
+2026-10-14T16:24:57.090Z [info]: ::1 - - [14/Oct/2026:16:24:57 +0000] "DELETE /drivers/1/routes/1 HTTP/1.1" 200 183 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:24:57.091Z [info]: DELETE /drivers/1/routes/1 - 200 - 38ms
+2026-10-14T16:25:03.454Z [error]: Conductor no encontrado
+2026-10-14T16:25:03.455Z [info]: ::1 - - [14/Oct/2026:16:25:03 +0000] "PUT /drivers/9999/routes/1 HTTP/1.1" 404 73 "-" "curl/8.13.0"
+2026-10-14T16:25:03.457Z [info]: PUT /drivers/9999/routes/1 - 404 - 7ms
+2026-10-14T16:25:03.645Z [error]: Ruta no encontrada
+2026-10-14T16:25:03.648Z [info]: ::1 - - [14/Oct/2026:16:25:03 +0000] "PUT /drivers/1/routes/9999 HTTP/1.1" 404 76 "-" "curl/8.13.0"
+2026-10-14T16:25:03.648Z [info]: PUT /drivers/1/routes/9999 - 404 - 9ms
+2026-10-14T16:25:03.847Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "received": "NaN",
+    "path": [
+      "id"
+    ],
+    "message": "El ID del conductor debe ser un número"
+  }
+]
+2026-10-14T16:25:03.849Z [info]: ::1 - - [14/Oct/2026:16:25:03 +0000] "PUT /drivers/abc/routes/1 HTTP/1.1" 400 163 "-" "curl/8.13.0"
+2026-10-14T16:25:03.849Z [info]: PUT /drivers/abc/routes/1 - 400 - 4ms
+2026-10-14T16:25:04.225Z [info]: ::1 - - [14/Oct/2026:16:25:04 +0000] "POST /drivers HTTP/1.1" 201 165 "-" "curl/8.13.0"
+2026-10-14T16:25:04.227Z [info]: POST /drivers - 201 - 32ms
+2026-10-14T16:25:04.401Z [error]: 
+Invalid `prisma.driver.create()` invocation in
+C:\Users\Angel Gomez\OneDrive\Desktop\TransporteEscolar\Trasporte-escolar\src\exercise-3\repositories\drivers.repository.ts:37:26
+
+  34 }
+  35 
+  36 create(data: CreateDriverDTO): Promise<DriverWithRoutes> {
+→ 37   return prisma.driver.create(
+Unique constraint failed on the constraint: `drivers_licenseNumber_key`
+2026-10-14T16:25:04.403Z [info]: ::1 - - [14/Oct/2026:16:25:04 +0000] "POST /drivers HTTP/1.1" 409 97 "-" "curl/8.13.0"
+2026-10-14T16:25:04.403Z [info]: POST /drivers - 409 - 96ms
+2026-10-14T16:25:04.688Z [info]: ::1 - - [14/Oct/2026:16:25:04 +0000] "DELETE /drivers/1 HTTP/1.1" 204 - "-" "curl/8.13.0"
+2026-10-14T16:25:04.689Z [info]: DELETE /drivers/1 - 204 - 17ms
+2026-10-14T16:25:04.780Z [error]: Conductor no encontrado
+2026-10-14T16:25:04.782Z [info]: ::1 - - [14/Oct/2026:16:25:04 +0000] "DELETE /drivers/1 HTTP/1.1" 404 73 "-" "curl/8.13.0"
+2026-10-14T16:25:04.782Z [info]: DELETE /drivers/1 - 404 - 8ms
+2026-10-14T16:34:39.204Z [info]: ::1 - - [14/Oct/2026:16:34:39 +0000] "GET /routes?page=1&limit=1 HTTP/1.1" 200 176 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:39.208Z [info]: GET /routes?page=1&limit=1 - 200 - 419ms
+2026-10-14T16:34:41.710Z [info]: ::1 - - [14/Oct/2026:16:34:41 +0000] "POST /students HTTP/1.1" 201 134 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:41.715Z [info]: POST /students - 201 - 54ms
+2026-10-14T16:34:41.732Z [info]: ::1 - - [14/Oct/2026:16:34:41 +0000] "POST /students HTTP/1.1" 201 138 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:41.738Z [info]: POST /students - 201 - 18ms
+2026-10-14T16:34:41.759Z [info]: ::1 - - [14/Oct/2026:16:34:41 +0000] "POST /students HTTP/1.1" 201 136 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:41.761Z [info]: POST /students - 201 - 21ms
+2026-10-14T16:34:41.773Z [info]: ::1 - - [14/Oct/2026:16:34:41 +0000] "POST /students HTTP/1.1" 201 137 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:41.777Z [info]: POST /students - 201 - 14ms
+2026-10-14T16:34:41.791Z [info]: ::1 - - [14/Oct/2026:16:34:41 +0000] "POST /students HTTP/1.1" 201 137 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:41.794Z [info]: POST /students - 201 - 15ms
+2026-10-14T16:34:49.135Z [info]: ::1 - - [14/Oct/2026:16:34:49 +0000] "GET /students?search=an HTTP/1.1" 200 579 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:49.136Z [info]: GET /students?search=an - 200 - 53ms
+2026-10-14T16:34:49.445Z [info]: ::1 - - [14/Oct/2026:16:34:49 +0000] "GET /students?routeId=1&minAge=13&maxAge=15 HTTP/1.1" 200 583 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:49.446Z [info]: GET /students?routeId=1&minAge=13&maxAge=15 - 200 - 25ms
+2026-10-14T16:34:49.734Z [info]: ::1 - - [14/Oct/2026:16:34:49 +0000] "GET /students?sortBy=name&order=desc HTTP/1.1" 200 838 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:49.740Z [info]: GET /students?sortBy=name&order=desc - 200 - 25ms
+2026-10-14T16:34:49.860Z [info]: ::1 - - [14/Oct/2026:16:34:49 +0000] "GET /students?sortBy=age&order=desc HTTP/1.1" 200 838 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:49.865Z [info]: GET /students?sortBy=age&order=desc - 200 - 12ms
+2026-10-14T16:34:50.119Z [info]: ::1 - - [14/Oct/2026:16:34:50 +0000] "GET /students?minAge=13&sortBy=age&order=desc&page=2&limit=2 HTTP/1.1" 200 326 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.7725"
+2026-10-14T16:34:50.122Z [info]: GET /students?minAge=13&sortBy=age&order=desc&page=2&limit=2 - 200 - 11ms
+2026-10-14T16:35:20.153Z [error]: [
+  {
+    "code": "invalid_value",
+    "values": [
+      "id",
+      "name",
+      "age",
+      "createdAt"
+    ],
+    "path": [
+      "sortBy"
+    ],
+    "message": "sortBy debe ser id, name, age o createdAt"
+  }
+]
+2026-10-14T16:35:20.155Z [info]: ::1 - - [14/Oct/2026:16:35:20 +0000] "GET /students?sortBy=password HTTP/1.1" 400 169 "-" "curl/8.13.0"
+2026-10-14T16:35:20.155Z [info]: GET /students?sortBy=password - 400 - 4ms
+2026-10-14T16:35:20.267Z [error]: [
+  {
+    "code": "invalid_value",
+    "values": [
+      "asc",
+      "desc"
+    ],
+    "path": [
+      "order"
+    ],
+    "message": "order debe ser asc o desc"
+  }
+]
+2026-10-14T16:35:20.269Z [info]: ::1 - - [14/Oct/2026:16:35:20 +0000] "GET /students?order=up HTTP/1.1" 400 152 "-" "curl/8.13.0"
+2026-10-14T16:35:20.269Z [info]: GET /students?order=up - 400 - 2ms
+2026-10-14T16:35:20.404Z [error]: [
+  {
+    "expected": "number",
+    "code": "invalid_type",
+    "received": "NaN",
+    "path": [
+      "routeId"
+    ],
+    "message": "Invalid input: expected number, received NaN"
+  }
+]
+2026-10-14T16:35:20.405Z [info]: ::1 - - [14/Oct/2026:16:35:20 +0000] "GET /students?routeId=abc HTTP/1.1" 400 173 "-" "curl/8.13.0"
+2026-10-14T16:35:20.406Z [info]: GET /students?routeId=abc - 400 - 3ms
+2026-10-14T16:35:21.714Z [error]: [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 100,
+    "inclusive": true,
+    "path": [
+      "limit"
+    ],
+    "message": "limit no puede ser mayor que 100"
+  }
+]
+2026-10-14T16:35:21.716Z [info]: ::1 - - [14/Oct/2026:16:35:21 +0000] "GET /students?limit=500 HTTP/1.1" 400 159 "-" "curl/8.13.0"
+2026-10-14T16:35:21.717Z [info]: GET /students?limit=500 - 400 - 4ms

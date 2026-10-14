@@ -18,14 +18,14 @@ import {
   createStudentSchema,
   updateStudentSchema,
   studentIdSchema,
-  paginationSchema
+  studentQuerySchema
 } from "../schemas/student.schema.js";
 
 const router = Router();
 
 router.get(
   "/",
-  validateQuery(paginationSchema),
+  validateQuery(studentQuerySchema),
   getStudents
 );
 

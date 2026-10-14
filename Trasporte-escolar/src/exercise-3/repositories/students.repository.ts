@@ -1,79 +1,87 @@
+import { prisma } from "../config/prisma.js";
+import { getPrismaErrorCode } from "../utils/prismaErrors.js";
+
+import type {
+  CreateStudentDTO,
+  UpdateStudentDTO,
+  StudentQueryDTO
+} from "../dtos/student.dto.js";
 import type { Student } from "../types/student.types.js";
 
+function buildWhere(query: StudentQueryDTO) {
+  const age = {
+    ...(query.minAge !== undefined && { gte: query.minAge }),
+    ...(query.maxAge !== undefined && { lte: query.maxAge })
+  };
+
+  return {
+    ...(query.search !== undefined && {
+      name: { contains: query.search, mode: "insensitive" as const }
+    }),
+    ...(query.routeId !== undefined && { routeId: query.routeId }),
+    ...(Object.keys(age).length > 0 && { age })
+  };
+}
+
 export class StudentsRepository {
-  private students: Student[] = [
-    {
-      id: 1,
-      name: "Juan Pérez",
-      age: 15,
-      route: "Ruta 1"
-    },
-    {
-      id: 2,
-      name: "María Gómez",
-      age: 16,
-      route: "Ruta 2"
-    }
-  ];
+  findPaginated(query: StudentQueryDTO): Promise<Student[]> {
+    const { page, limit, sortBy, order } = query;
 
-  private nextId = 3;
+    const sort = {
+      id: { id: order },
+      name: { name: order },
+      age: { age: order },
+      createdAt: { createdAt: order }
+    }[sortBy];
 
-  findAll(): Student[] {
-    return this.students;
+    return prisma.student.findMany({
+      where: buildWhere(query),
+      orderBy: [sort, { id: "asc" }],
+      skip: (page - 1) * limit,
+      take: limit
+    });
   }
 
-  findPaginated(page: number, limit: number): Student[] {
-    const startIndex = (page - 1) * limit;
-    const endIndex = startIndex + limit;
-
-    return this.students.slice(startIndex, endIndex);
+  count(query: StudentQueryDTO): Promise<number> {
+    return prisma.student.count({ where: buildWhere(query) });
   }
 
-  count(): number {
-    return this.students.length;
+  findById(id: number): Promise<Student | null> {
+    return prisma.student.findUnique({ where: { id } });
   }
 
-  findById(id: number): Student | undefined {
-    return this.students.find((student) => student.id === id);
+  create(data: CreateStudentDTO): Promise<Student> {
+    return prisma.student.create({ data });
   }
 
-  create(data: Omit<Student, "id">): Student {
-    const newStudent: Student = {
-      id: this.nextId++,
-      ...data
-    };
-
-    this.students.push(newStudent);
-
-    return newStudent;
-  }
-
-  update(
+  async update(
     id: number,
-    data: Partial<Omit<Student, "id">>
-  ): Student | undefined {
-    const student = this.findById(id);
+    data: UpdateStudentDTO
+  ): Promise<Student | null> {
+    try {
+      return await prisma.student.update({
+        where: { id },
+        data
+      });
+    } catch (error) {
+      if (getPrismaErrorCode(error) === "P2025") {
+        return null;
+      }
 
-    if (!student) {
-      return undefined;
+      throw error;
     }
-
-    Object.assign(student, data);
-
-    return student;
   }
 
-  delete(id: number): boolean {
-    const index = this.students.findIndex(
-      (student) => student.id === id
-    );
+  async delete(id: number): Promise<boolean> {
+    try {
+      await prisma.student.delete({ where: { id } });
+      return true;
+    } catch (error) {
+      if (getPrismaErrorCode(error) === "P2025") {
+        return false;
+      }
 
-    if (index === -1) {
-      return false;
+      throw error;
     }
-
-    this.students.splice(index, 1);
-
-    return true;
   }
 }

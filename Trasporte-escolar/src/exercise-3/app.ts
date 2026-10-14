@@ -7,6 +7,8 @@ import { auth } from "./middlewares/auth.js";
 import { loggerMiddleware } from "./middlewares/logger.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { notFound } from "./middlewares/notFound.js";
+import routesRouter from "./routes/routes.routes.js";
+import driversRouter from "./routes/drivers.routes.js";
 
 import { logger } from "./utils/logger.js";
 
@@ -33,6 +35,9 @@ app.use(loggerMiddleware);
 app.use(auth);
 
 app.use("/students", studentsRouter);
+app.use("/routes", routesRouter);
+app.use("/drivers", driversRouter);
+
 
 app.use(notFound);
 
